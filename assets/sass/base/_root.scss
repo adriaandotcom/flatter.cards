@@ -13,4 +13,83 @@ html {
  */
 *, ::before, ::after {
   box-sizing: inherit;
-} 
+}
+
+$color-main: #d83a3a;
+$color-dark: #585858;
+
+body {
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, p, li {
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+
+.logo {
+  margin-top: 50px;
+  width: 200px;
+}
+
+.button {
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+::-moz-selection {
+    background: rgba($color-main, 0.99);
+    color: white;
+}
+
+::-webkit-selection {
+    background: rgba($color-main, 0.99);
+    color: white;
+}
+
+::selection {
+    background: rgba($color-main, 0.99);
+    color: white;
+}
+
+p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 700px;
+
+  line-height: 150%;
+  color: $color-dark;
+  font-size: 19px;
+}
+
+.handing-cards {
+  position: relative;
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  .action {
+    position: absolute;
+    width: 200px;
+    left: calc(50% - 100px);
+    bottom: 10%;
+    color: white;
+
+    p {
+      margin-bottom: 5px;
+
+      &:last-of-type {
+        font-size: 13px;
+        margin-bottom: 0;
+      }
+    }
+    .button {
+      box-shadow: 0 0 10px black;
+      width: 200px;
+      display: block;
+      background-color: $color-main;
+    }
+  }
+}
