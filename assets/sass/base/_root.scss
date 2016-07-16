@@ -16,14 +16,18 @@ html {
 }
 
 $color-main: #d83a3a;
-$color-dark: #585858;
+$color-dark: #535354;
 
 body {
   text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6, p, li {
-  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  color: $color-dark;
+}
+
+p, li {
+  color: $color-dark;
 }
 
 .logo {
@@ -63,6 +67,15 @@ p {
   font-size: 19px;
 }
 
+.intro {
+  p {
+    font-family: "The Girl Next Door";
+    font-size: 24px;
+  }
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .handing-cards {
   position: relative;
   img {
@@ -79,12 +92,14 @@ p {
 
     p {
       margin-bottom: 5px;
+      color: white;
 
       &:last-of-type {
         font-size: 13px;
         margin-bottom: 0;
       }
     }
+
     .button {
       box-shadow: 0 0 10px black;
       width: 200px;
