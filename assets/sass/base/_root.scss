@@ -30,6 +30,14 @@ p, li {
   color: $color-dark;
 }
 
+.logo,
+section.handing-cards {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 .logo {
   margin-top: 50px;
   width: 200px;
@@ -56,6 +64,25 @@ p, li {
     color: white;
 }
 
+.button {
+  min-width: 200px;
+  background-color: $color-main;
+  color: white;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  line-height: normal;
+  overflow: visible;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+}
+
 p {
   margin-left: auto;
   margin-right: auto;
@@ -67,17 +94,33 @@ p {
   font-size: 19px;
 }
 
-.intro {
+h2 {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 40px;
+  line-height: 100%;
+  width: 90%;
+  margin-bottom: 0;
+  font-family: "The Girl Next Door";
+  color: $color-main;
+}
+
+section.intro,
+section.order {
   p {
     font-family: "The Girl Next Door";
-    font-size: 24px;
+    font-size: 22px;
   }
+}
+
+section.intro {
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
-.handing-cards {
+section.handing-cards {
   position: relative;
+
   img {
     width: 100%;
     display: block;
@@ -102,9 +145,97 @@ p {
 
     .button {
       box-shadow: 0 0 10px black;
-      width: 200px;
       display: block;
-      background-color: $color-main;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+section.order {
+  min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .response {
+    // display: none;
+    .button {
+      background-color: #3b5998;
+    }
+  }
+
+  .button {
+    margin-top: 20px;
+  }
+}
+
+.hide-after-submit  {
+  display: none; // remove later
+}
+
+form {
+  display: none; // remove later
+
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+
+  input[type="text"] {
+    padding: 10px 10px;
+    border: 1px solid $color-dark;
+    border-radius: 3px;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+
+    & + input {
+      margin-top: 10px;
+    }
+  }
+
+  label {
+    text-align: left;
+    display: block;
+    margin-top: 20px;
+    color: $color-dark;;
+    margin-bottom: 5px;
+  }
+
+  .address {
+    display: none;
+  }
+
+  .row {
+    display: flex;
+
+    div:last-of-type {
+      margin-left: 5%;
+    }
+
+    &.divide-70-30 {
+      div:first-of-type {
+        width: 67.5%;
+      }
+      div:last-of-type {
+        width: 27.5%;
+      }
+    }
+
+    &.divide-40-60 {
+      div:first-of-type {
+        width: 37.5%;
+      }
+      div:last-of-type {
+        width: 57.5%;
+      }
     }
   }
 }

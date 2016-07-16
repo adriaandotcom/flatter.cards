@@ -7,12 +7,182 @@ layout: default
 <section class="intro">
   <p>Receiving complements is fun, but giving them is not always easy.
   Sometimes the time is not right or you want to phrase your complement carefully.</p>
+
+  <p>That is why you need flatter. You can order breakable cards. Each part of the
+    card has a unique code. With this code you can leave a message online.
+    You will get a notification when the lucky guy / girl has read your message</p>
+  </thead></p>
 </section>
 
-<div class="handing-cards">
+<section class="handing-cards">
   <div class="action">
     <p><a class="button">Order now</a></p>
     <p>(it's free)</p>
   </div>
   <img src="/assets/images/handing-cards.png" alt="Handing flatter cards">
-</div>
+</section>
+
+<section class="order" id="order">
+  <h2 class="hide-after-submit">Send me those cards!</h2>
+  <p class="hide-after-submit">By giving these cards, you will make the world a better place.
+    The world needs more people like you, keep rocking!</p>
+
+  <form class="order">
+    <label for="name">Your name</label>
+    <input type="text" id="name" required="required">
+
+    <label for="email">Your email address</label>
+    <input type="text" id="email" required="required">
+
+    <div class="autocomplete">
+      <label for="autocomplete">Your address</label>
+      <input id="autocomplete" type="text" placeholder="just start typing...">
+    </div>
+
+    <div class="address">
+      <div class="row divide-70-30">
+        <div>
+          <label for="route">Street</label>
+          <input type="text" id="route">
+        </div>
+        <div>
+          <label for="street_number">Number</label>
+          <input type="text" id="street_number">
+        </div>
+      </div>
+
+      <div class="row divide-40-60">
+        <div>
+          <label for="postal_code">Postal code</label>
+          <input type="text" id="postal_code">
+        </div>
+        <div>
+          <label for="locality">City</label>
+          <input type="text" id="locality">
+        </div>
+      </div>
+
+      <label for="country">Country</label>
+      <input id="country" type="text">
+    </div>
+
+    <input type="submit" class="button" value="Send me those awesome cards">
+
+  </form>
+
+  <div class="response">
+    <p>Thanks for being awesome!</p>
+
+    <p><a class="button" href="https://www.facebook.com/dialog/feed?display=page&link=https%3A%2F%2Fflatter.cards%2F&amp;redirect_uri=https%3A%2F%2Fflatter.cards%2F%3Futm_srouce%3Dfacebook%26utm_campain%3Dafter_share&name=Give%20compliments%20to%20strangers%20with%20Flatter%20cards&description=I%20just%20ordered%20Flatter%20cards%20to%20give%20compliments%20to%20stangers%2C%20you%20can%20order%20them%20now%20for%20free.&amp;caption=Order%20for%20free%20on%20Flatter.cards&amp;picture=https%3A%2F%2Fflatter.cards%2Fassets%2Fimages%2Ffacebook-share-image.png&amp;app_id=303290866727566"> Share on Facebook</a></p>
+
+    <p>We do this for free, so we can use your power to share as our marketingbudget.</p>
+  </div>
+
+</section>
+
+
+<script>
+  // This example displays an address form, using the autocomplete feature
+  // of the Google Places API to help users fill in the information.
+
+  // This example requires the Places library. Include the libraries=places
+  // parameter when you first load the API. For example:
+  // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+  var placeSearch, autocomplete;
+  var componentForm = {
+    street_number: 'short_name',
+    route: 'long_name',
+    locality: 'long_name',
+   //  administrative_area_level_1: 'short_name',
+    country: 'long_name',
+    postal_code: 'short_name'
+  };
+
+  function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+    autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['geocode']});
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', fillInAddress);
+  }
+
+  function fillInAddress() {
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+    for (var component in componentForm) {
+      document.getElementById(component).value = '';
+      document.getElementById(component).disabled = false;
+    }
+
+    if (!place.address_components) {
+      document.querySelector('form .address').style.display = 'block';
+      document.querySelector('form .autocomplete').style.display = 'none';
+      return;
+    }
+
+    // Get each component of the address from the place details
+    // and fill the corresponding field on the form.
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
+      }
+    }
+
+    document.querySelector('form .address').style.display = 'block';
+    document.querySelector('form .autocomplete').style.display = 'none';
+  }
+
+  var newsLetterForm = document.querySelector('form.order');
+
+  if (newsLetterForm) {
+
+    newsLetterForm.addEventListener('submit', function(event) {
+
+      // Don't do anything, browser!
+      event.preventDefault();
+
+      // Get values
+      var name = newsLetterForm.querySelector('#name');
+      var email = newsLetterForm.querySelector('#email');
+      var address = newsLetterForm.querySelector('#autocomplete');
+      var street = newsLetterForm.querySelector('#route');
+      var streetNumber = newsLetterForm.querySelector('#street_number');
+      var postalCode = newsLetterForm.querySelector('#postal_code');
+      var city = newsLetterForm.querySelector('#locality');
+      var country = newsLetterForm.querySelector('#country');
+
+      var message = 'Name: ' + name.value + '\n';
+      message += 'Email address: ' + email.value + '\n';
+      message += 'Address: ' + address.value + '\n';
+      message += 'Street name: ' + street.value + '\n';
+      message += 'Street number: ' + streetNumber.value + '\n';
+      message += 'Postal code: ' + postalCode.value + '\n';
+      message += 'City: ' + city.value + '\n';
+      message += 'Country: ' + country.value + '\n';
+
+      // Send newsletter email to myself
+      var url = 'https://screenmessage.com/blog/mail.php?subject=New+Flatter+order&message=' + encodeURIComponent(message);
+      var request = new XMLHttpRequest();
+      request.open('GET', url, true);
+      request.send();
+
+      // Show response and hide other divs
+      newsLetterForm.style.display = 'none';
+      document.querySelector('h2.hide-after-submit').style.display = 'none';
+      document.querySelector('p.hide-after-submit').style.display = 'none';
+      document.querySelector('.response').style.display = 'block';
+
+    })
+  }
+
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDmkRCzZQj90c9VkAfoJRLKRFZObOPNWo&libraries=places&callback=initAutocomplete"></script>
