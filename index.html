@@ -159,7 +159,11 @@ layout: default
       var city = newsLetterForm.querySelector('#locality');
       var country = newsLetterForm.querySelector('#country');
 
-      if (!street.value || street.value === '') return;
+      if (!street.value || street.value === '') {
+        document.querySelector('form .address').style.display = 'block';
+        document.querySelector('form .autocomplete').style.display = 'none';
+        return;
+      }
 
       var message = 'Name: ' + name.value + '\n';
       message += 'Email address: ' + email.value + '\n';
