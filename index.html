@@ -16,7 +16,7 @@ layout: default
 
 <section class="handing-cards">
   <div class="action">
-    <p><a class="button">Order now</a></p>
+    <p><a class="button order">Order now</a></p>
     <p>(it's free)</p>
   </div>
   <img src="/assets/images/handing-cards.png" alt="Handing flatter cards">
@@ -159,6 +159,8 @@ layout: default
       var city = newsLetterForm.querySelector('#locality');
       var country = newsLetterForm.querySelector('#country');
 
+      if (!street.value || street.value === '') return;
+
       var message = 'Name: ' + name.value + '\n';
       message += 'Email address: ' + email.value + '\n';
       message += 'Address: ' + address.value + '\n';
@@ -182,6 +184,12 @@ layout: default
 
     })
   }
+
+  document.querySelector('.button.order').addEventListener('click', function() {
+    document.querySelector('section.order').style.display = 'block';
+    document.querySelector('section.order').style.display = 'flex';
+    window.scrollTo(0, document.body.scrollHeight);
+  })
 
 </script>
 

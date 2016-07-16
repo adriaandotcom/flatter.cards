@@ -156,7 +156,7 @@ section.order {
   min-height: 100vh;
   padding-top: 50px;
   padding-bottom: 50px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
 
@@ -165,7 +165,7 @@ section.order {
   }
 
   .response {
-    // display: none;
+    display: none;
     .button {
       background-color: #3b5998;
     }
@@ -176,13 +176,7 @@ section.order {
   }
 }
 
-.hide-after-submit  {
-  display: none; // remove later
-}
-
 form {
-  display: none; // remove later
-
   width: 400px;
   margin-left: auto;
   margin-right: auto;
